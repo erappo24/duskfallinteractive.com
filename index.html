@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duskfall Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #08080f;
+    --navy: #0d0d1a;
+    --dark: #13132a;
+    --gold: #C9A84C;
+    --gold-dim: #8B6914;
+    --stone: #8a8a9a;
+    --mist: #4a4a6a;
+    --white: #e8e8f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(8, 8, 15, 0.92);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 60%, rgba(201, 168, 76, 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 30% 80%, rgba(13, 13, 26, 0.8) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem auto;
+    opacity: 0.5;
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    color: var(--stone);
+    max-width: 520px;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 6rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .section-body {
+    color: var(--stone);
+    font-size: 1.05rem;
+    max-width: 640px;
+    line-height: 1.85;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+    margin: 0 auto;
+  }
+
+  /* ABOUT */
+  .about { border-left: 1px solid rgba(201,168,76,0.15); padding-left: 3rem; }
+
+  /* GAMES */
+  .games-section { padding: 6rem 2rem; max-width: 960px; margin: 0 auto; }
+
+  .game-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    padding: 3rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: var(--navy);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .game-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .game-icon-box {
+    background: var(--dark);
+    border: 1px solid rgba(201,168,76,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    font-size: 4rem;
+  }
+
+  .game-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .game-subtitle {
+    font-size: 0.85rem;
+    color: var(--mist);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+  }
+
+  .game-desc {
+    color: var(--stone);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--mist);
+    border: 1px solid var(--mist);
+    padding: 0.2rem 0.6rem;
+    opacity: 0.7;
+  }
+
+  .coming-soon {
+    opacity: 0.5;
+  }
+
+  .coming-soon .game-card::before {
+    background: var(--mist);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 6rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 0.2rem;
+    margin-top: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .contact-email:hover { border-color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--mist);
+    opacity: 0.5;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .game-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    .game-icon-box { max-width: 100px; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .about { padding-left: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Duskfall Interactive</a>
+  <ul class="nav-links">
+    <li><a href="#games">Games</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Duskfall Interactive</p>
+  <h1 class="hero-title">Stories forged<br>in <span>darkness</span></h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">We build dark fantasy worlds where every choice carries weight and no one saves you but yourself.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- GAMES -->
+<div class="games-section" id="games">
+  <p class="section-label">Our Games</p>
+
+  <div class="game-card">
+    <div class="game-icon-box">⚔️</div>
+    <div>
+      <div class="game-badge">Available Now — Android</div>
+      <h2 class="game-title">Dungeon Alone</h2>
+      <p class="game-subtitle">Solo Campaign · World of Valdris</p>
+      <p class="game-desc">
+        A solo dark fantasy RPG set in Valdris — a dying continent of collapsed empires, hollow gods, and things that should not still be breathing. An AI Dungeon Master narrates your journey, responds to your choices, and remembers your story. Every campaign is unique. Every death is final.
+      </p>
+      <div class="game-tags">
+        <span class="tag">Dark Fantasy</span>
+        <span class="tag">Solo RPG</span>
+        <span class="tag">AI Dungeon Master</span>
+        <span class="tag">Android</span>
+        <span class="tag">Procedural</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon">
+    <div class="game-card">
+      <div class="game-icon-box">🜏</div>
+      <div>
+        <div class="game-badge">In Development</div>
+        <h2 class="game-title">The Unraveling</h2>
+        <p class="game-subtitle">Dark Fantasy Action · Unreal Engine 5</p>
+        <p class="game-desc">
+          Something is coming apart at the edges of the world. A dark fantasy action game built in Unreal Engine 5 — more details when the time is right.
+        </p>
+        <div class="game-tags">
+          <span class="tag">Dark Fantasy</span>
+          <span class="tag">Action</span>
+          <span class="tag">Unreal Engine 5</span>
+          <span class="tag">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="studio">
+  <p class="section-label">The Studio</p>
+  <h2 class="section-title">Built on dark corners<br>and difficult choices</h2>
+  <div class="about">
+    <p class="section-body">
+      Duskfall Interactive is an independent game studio focused on dark fantasy experiences. We build worlds with weight — places where the lore runs deep, the choices matter, and the atmosphere does as much work as the mechanics.
+    </p>
+    <br>
+    <p class="section-body">
+      We are a small studio. Every game we ship is made with intention. We would rather release one thing that means something than ten things that don't.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Get in touch</h2>
+  <p class="section-body" style="margin: 0 auto; text-align: center;">
+    For press inquiries, support, or anything else — reach us at
+  </p>
+  <a href="mailto:contact@duskfallinteractive.com" class="contact-email">contact@duskfallinteractive.com</a>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Duskfall Interactive</span>
+  <ul class="footer-links">
+    <li><a href="#games">Games</a></li>
+    <li><a href="#studio">Studio</a></li>
+    <li><a href="/privacy">Privacy Policy</a></li>
+    <li><a href="mailto:contact@duskfallinteractive.com">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Duskfall Interactive</span>
+</footer>
+
+</body>
+</html>
