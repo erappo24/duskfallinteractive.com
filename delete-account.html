@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account — Duskfall Interactive</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #08080f; --navy: #0d0d1a; --gold: #C9A84C;
+    --gold-dim: #8B6914; --stone: #8a8a9a; --mist: #4a4a6a;
+    --white: #e8e8f0; --red: #c0392b;
+  }
+  body { background: var(--black); color: var(--white); font-family: 'Crimson Pro', Georgia, serif; font-size: 18px; line-height: 1.8; font-weight: 300; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(8,8,15,0.92); border-bottom: 1px solid rgba(201,168,76,0.15); backdrop-filter: blur(8px); }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; }
+  .nav-back { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.12em; color: var(--stone); text-decoration: none; }
+  .nav-back:hover { color: var(--gold); }
+  .container { max-width: 760px; margin: 0 auto; padding: 8rem 2rem 6rem; }
+  .page-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold-dim); margin-bottom: 1rem; }
+  .page-title { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, rgba(201,168,76,0.3), transparent); margin: 2rem 0; }
+  h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; margin: 2.5rem 0 1rem; }
+  p { color: var(--stone); margin-bottom: 1rem; font-size: 1rem; }
+  ul, ol { color: var(--stone); padding-left: 1.5rem; margin-bottom: 1rem; font-size: 1rem; }
+  li { margin-bottom: 0.6rem; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); }
+  a:hover { border-color: var(--gold); }
+  .warning-block { padding: 1.5rem 2rem; border: 1px solid rgba(192,57,43,0.3); background: rgba(192,57,43,0.05); border-left: 3px solid var(--red); margin: 2rem 0; }
+  .warning-block p { color: #e08070; margin: 0; }
+  .contact-block { margin-top: 2rem; padding: 2rem; border: 1px solid rgba(201,168,76,0.15); background: var(--navy); border-left: 3px solid var(--gold); }
+  .contact-block p { margin: 0; }
+  footer { border-top: 1px solid rgba(201,168,76,0.1); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; margin-top: 4rem; }
+  .footer-logo { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.15em; color: var(--gold-dim); }
+  .footer-copy { font-size: 0.8rem; color: var(--mist); opacity: 0.5; }
+  @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } footer { flex-direction: column; gap: 1rem; text-align: center; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Duskfall Interactive</a>
+  <a href="/" class="nav-back">← Back to Home</a>
+</nav>
+<div class="container">
+  <p class="page-label">Account Management</p>
+  <h1 class="page-title">Request Account Deletion</h1>
+  <div class="divider"></div>
+  <p>If you would like to delete your Dungeon Alone account and all associated data, follow the steps below. This process is permanent and cannot be undone.</p>
+  <div class="warning-block">
+    <p>Account deletion is permanent. All your characters, campaigns, game history, and progress will be deleted and cannot be recovered.</p>
+  </div>
+  <h2>What Gets Deleted</h2>
+  <ul>
+    <li>Your account and login credentials</li>
+    <li>All characters and their stats, inventory, and spells</li>
+    <li>All campaigns and game session history</li>
+    <li>Your character portrait images</li>
+    <li>Any unused credits</li>
+  </ul>
+  <h2>What Gets Retained</h2>
+  <ul>
+    <li>Transaction records may be retained for up to 90 days for legal and accounting purposes</li>
+    <li>No gameplay data is retained after the 90-day period</li>
+  </ul>
+  <h2>How to Request Deletion</h2>
+  <ol>
+    <li>Send an email to <a href="mailto:contact@duskfallinteractive.com">contact@duskfallinteractive.com</a> from the email address associated with your account</li>
+    <li>Use the subject line: <em>Account Deletion Request — Dungeon Alone</em></li>
+    <li>Include your in-game username or character name so we can locate your account</li>
+    <li>We will confirm your request within 48 hours and complete the deletion within 7 days</li>
+  </ol>
+  <div class="contact-block">
+    <p style="color: var(--white); font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Contact</p>
+    <p>Questions about your data? Reach us at <a href="mailto:contact@duskfallinteractive.com">contact@duskfallinteractive.com</a></p>
+  </div>
+</div>
+<footer>
+  <span class="footer-logo">Duskfall Interactive</span>
+  <span class="footer-copy">© 2026 Duskfall Interactive</span>
+</footer>
+</body>
+</html>
